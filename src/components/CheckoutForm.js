@@ -16,11 +16,13 @@ const initialValue = {
 
 const CheckoutForm = (props) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [submission, setSubmission] = useState({})
   const [values, setValues, handleChanges] = useForm(initialValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowSuccessMessage(true);
+    setSubmission(values)
     setValues(initialValue)
   };
 
@@ -76,11 +78,11 @@ const CheckoutForm = (props) => {
           <br />
           <br />
           <p>
-            {values.firstName} {values.lastName}
+            {submission.firstName} {submission.lastName}
           </p>
-          <p>{values.address}</p>
+          <p>{submission.address}</p>
           <p>
-            {values.city}, {values.state} {values.zip}
+            {submission.city}, {submission.state} {submission.zip}
           </p>
         </div>
       )}
